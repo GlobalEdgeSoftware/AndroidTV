@@ -1,0 +1,22 @@
+--- device/qcom/msm8916_64/msm8916_64_orig.mk	2017-01-25 17:35:56.884457911 +0530
++++ device/qcom/msm8916_64/msm8916_64.mk	2017-01-25 18:04:33.820487221 +0530
+@@ -1,5 +1,10 @@
+ DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_64/overlay
+ 
++$(call inherit-product, device/google/atv/products/atv_base.mk)
++
++include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
++
++
+ TARGET_USES_QCOM_BSP := true
+ # Add QC Video Enhancements flag
+ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+@@ -57,7 +62,7 @@ endif
+ PRODUCT_BOOT_JARS += WfdCommon
+ 
+ # default is nosdcard, S/W button enabled in resource
+-PRODUCT_CHARACTERISTICS := nosdcard
++PRODUCT_CHARACTERISTICS := tv
+ 
+ #Android EGL implementation
+ PRODUCT_PACKAGES += libGLES_android
