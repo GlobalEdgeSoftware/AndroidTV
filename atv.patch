@@ -1,0 +1,44 @@
+diff --git a/msm8916_64.mk b/msm8916_64.mk
+index 08d6852..3089acc 100644
+--- a/msm8916_64.mk
++++ b/msm8916_64.mk
+@@ -1,5 +1,16 @@
++#USE_OEM_TV_APP := true
++#$(call inherit-product, device/google/atv/products/atv_base.mk)
++PRODUCT_CHARACTERISTICS := tv
++$(call inherit-product, device/google/atv/products/atv_base.mk)
++
+ DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_64/overlay
+ 
++#PRODUCT_AAPT_CONFIG := normal tvdpi hdpi
++#PRODUCT_AAPT_PREF_CONFIG := tvdpi
++
++include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
++
++
+ TARGET_USES_QCOM_BSP := true
+ # Add QC Video Enhancements flag
+ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+@@ -57,7 +68,7 @@ endif
+ PRODUCT_BOOT_JARS += WfdCommon
+ 
+ # default is nosdcard, S/W button enabled in resource
+-PRODUCT_CHARACTERISTICS := nosdcard
++PRODUCT_CHARACTERISTICS := tv, nosdcard
+ 
+ #Android EGL implementation
+ PRODUCT_PACKAGES += libGLES_android
+@@ -83,7 +94,12 @@ PRODUCT_COPY_FILES += \
+     device/qcom/msm8916_32/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+     device/qcom/msm8916_32/sound_trigger_mixer_paths_wcd9306.xml:system/etc/sound_trigger_mixer_paths_wcd9306.xml \
+     device/qcom/msm8916_32/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+-    device/qcom/msm8916_64/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
++    device/qcom/msm8916_64/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
++    device/qcom/msm8916_64/bootanimation.zip:system/media/bootanimation.zip
++
++# Boot animation
++PRODUCT_COPY_FILES += \
++    device/qcom/msm8916_64/bootanimation.zip:system/media/bootanimation.zip
+ 
+ # MIDI feature
+ PRODUCT_COPY_FILES += \
